@@ -1,0 +1,357 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Web технологии</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=792, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../static/node_modules/shower-bright/styles/screen.css">
+    <link rel="stylesheet" href="../../static/css/highlight/github.css">
+    <link rel="stylesheet" href="../../static/css/index.css">
+</head>
+<body class="list">
+    <header class="caption">
+        <h1>Web технологии</h1>
+        <p><a href="https://github.com/mialinx/">Дмитрий Смаль</a></p>
+    </header>
+
+    <section class="slide shout"><div>
+        <h2>Web приложения</h2>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Основные типы запросов</h2>
+        <ul>
+            <li><font color="gray">Запросы статических документов</font></li>
+            <li>Запросы динамических документов</li>
+            <li>Отправка данных форм</li>
+            <li>AJAX - запросы</li>
+            <li>Запросы к API сайта</li>
+            <li><font color="gray">Персистентные соединения</font></li>
+        </ul>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Основные задачи</h2>
+        <ul>
+            <li>Маршрутизация URL</li>
+            <li>Парсинг заголовков и параметров запроса</li>
+            <li>Хранение состояния (сессии) пользователя</li>
+            <li>Выполнение бизнес-логики</li>
+            <li>Работа с базами данных</li>
+            <li>Генерация HTML страницы или JSON ответа</li>
+        </ul>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>MVC</h2>
+    </div></section>
+
+    <section class="slide"><div>
+        <img src="pictures/mvc.png" class="place">
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Роли компонентов MVC</h2>
+        <ul>
+            <li>Router - выбор конкретного controller по URL</li>
+            <li>Model - реализация бизнес-логики приложения</li>
+            <li>Controller - работа с HTTP, связь model и view </li>
+            <li>View - генерация HTML или другого представления</li>
+        </ul>
+    </div></section>
+
+    <section class="slide"><div>
+        <img src="pictures/frameworks.png" class="place">
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Плюсы фреймворков</h2>
+        <ul>
+            <plus>Готовая архитектура</plus>
+            <plus>Повторное использование кода</plus>
+            <plus>Экономия ресурсов</plus>
+            <plus>Участие в Open Source</plus>
+            <plus>Проще найти программистов</plus>
+            <plus>Проще обучать программистов</plus>
+        </ul>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>Django</h2>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Соглашение о именовании</h2>
+        <table>
+            <tr><th>MVC</th><th>Django</th></tr>
+            <tr><td>Model</td><td>Model</td></tr>
+            <tr><td>Router</td><td>urls.py</td></tr>
+            <tr><td>Controller</td><td>views</td></tr>
+            <tr><td>View</td><td>templates</td></tr>
+        </table>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Структура проекта</h2>
+        <code>django-admin startproject project</code> - создание проекта.
+        <code>./manage.py startapp crm</code> - создание приложения.
+        <script type="snippet" lang="plain">
+            project
+            ├── crm
+            │   ├── models.py
+            │   ├── urls.py
+            │   └── views.py
+            ├── manage.py
+            └── project
+                ├── settings.py
+                ├── urls.py
+                └── wsgi.py
+        </script>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Основные файлы проекта</h2>
+        <ul>
+            <li><code>manage.py</code> - скрипт управления проектом</li>
+            <li><code>project/settings.py</code> - настройки</li>
+            <li><code>project/urls.py</code> - router, список URL проекта</li>
+            <li><code>project/wsgi.py</code> - WSGI приложение, точка входа</li>
+            <li><code>crm</code> - Django - приложение</li>
+        </ul>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Структура не-open-source проекта</h2>
+        <script type="snippet" lang="python">
+        project
+        ├── crm
+        │   └── ...
+        ├── blog
+        │   └── ...
+        ├── manage.py
+        ├── project
+        │   ├── settings.py
+        │   ├── urls.py
+        │   └── wsgi.py
+        ├── templates
+        └── static
+        </script>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>Django приложения</h2>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Django приложения</h2>
+        <p><b>Приложения</b> - способ распространения кода в Django инфраструктуре.
+        В случае, если вы не планируете публиковать ваш код, приложения - это просто способ логической организации кода.</p>
+        <p><code>./manage.py startapp crm</code> - создание нового приложения с именем <code>crm</code>. 
+            Нужно вызывать из директории проекта.</p>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Структура приложения</h2>
+        <script type="snippet" lang="plain">
+        ├── templates
+        ├── static
+        ├── templatetags
+        ├── management
+        │   └── commands
+        ├── migrations
+        ├── models.py
+        ├── tests.py
+        ├── urls.py
+        └── views.py
+    </script>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Основные файлы приложения</h2>
+        <ul>
+            <li><code>models.py</code> - файл с моделями, бизнес-логика</li>
+            <li><code>views.py</code> - контроллеры</li>
+            <li><code>urls.py</code> - URL роутер данного приложения</li>
+            <li><code>templates</code> - директория с шаблонами</li>
+            <li><code>management/commands</code> - консольные команды приложения</li>
+            <li><code>static</code> - CSS, JavaScript, картинки</li>
+            <li><code>migrations</code> - миграции для обновления базы данных</li>
+        </ul>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>Конфигурация Django</h2>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Конфиг - просто python модуль</h2>
+        <script type="snippet" lang="python">
+            # project/project/settings.py
+            ROOT_URLCONF = 'project.urls'
+            INSTALLED_APPS = [
+                'django.contrib.admin',
+                'django.contrib.auth',
+                'django.contrib.contenttypes',
+                'django.contrib.sessions'
+            ]
+            DATABASES = {
+                'default': {
+                    'ENGINE': 'django.db.backends.sqlite3',
+                    'NAME': BASE_DIR / 'db.sqlite3',
+                }
+            }
+        </script>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Пути в конфиге</h2>
+            Проблемы:
+            <ul>
+                <li>Проект может быть развернут в любой директории</li>
+                <li>Несколько копий проекта на одном сервере</li>
+            </ul>
+            Решения:
+            <ul>
+                <li>Абсолютные пути в каждом конфиге</li>
+                <li>Переменные окружения, <code>$PROJECT_PATH</code></li>
+                <li>Относительные пути</li>
+            </ul>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Относительные пути</h2>
+        <script type="snippet" lang="python">
+            from pathlib import Path
+
+            # Build paths inside the project like this: BASE_DIR / 'subdir'.
+            # __file__ = 'project/project/settings.py'
+            BASE_DIR = Path(__file__).resolve().parent.parent
+
+            STATIC_ROOT = BASE_DIR / 'static'
+        </script>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Паттерн local_settings.py</h2>
+        <script type="snippet" lang="python">
+            # в конце project/project/settings.py
+            try:
+                from project.local_settings import *
+            except ImportError:
+                pass
+        </script>
+        Файл local_settings.py добавляется в .gitignore
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Настройка шаблонов</h2>
+        <script type="snippet" lang="python">
+            TEMPLATES = [
+                {
+                    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                    'DIRS': [
+                        BASE_DIR / "templates"
+                    ],
+                    'APP_DIRS': True,
+                    'OPTIONS': {
+                        'context_processors': [
+                            'django.template.context_processors.debug',
+                            'django.template.context_processors.request',
+                            'django.contrib.auth.context_processors.auth',
+                            'django.contrib.messages.context_processors.messages',
+                        ],
+                    },
+                },
+            ]
+        </script>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>Маршрутизация URL</h2>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Порядок поиска контроллера</h2>
+        <ul>
+            <li>Django начинает поиск с файла <code>ROOT_URLCONF</code> из настроек</li>
+            <li>Загрузив файл, Django использует переменную <code>urlpatterns</code></li>
+            <li>Django проходит по всем паттернам до первого совпадения</code></li>
+            <li>Если совпадения не найдено - будет возвращен код <nobr><code>404 Not Found</code></nobr></li>
+        </ul>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Маршрутизация в проекте</h2>
+        <script type="snippet" lang="python">
+            # project/project/urls.py
+
+            urlpatterns = [
+                path('', blog.views.home, name='home'),
+                re_path(r'^blog/', include('blog.urls')),
+                re_path(r'^admin/', include('admin.site.urls')),
+            ]
+        </script>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Маршрутизация в приложении</h2>
+        <script type="snippet" lang="python">
+            # project/blog/urls.py
+            from blog import views
+
+            urlpatterns = [
+                path('', views.post_list, name='post-list'),
+                path('profile/<int:id>/', views.profile, name='profile-by-id'),
+                path('profile/<username>/', views.profile, name='profile'),
+                re_path('^category/(\d+)/$', views.category_view,
+                            name='post-list-by-category'),
+                re_path('^(?P<pk>\d+)/$', views.post_detail,
+                            name='post-detail'),
+            ]
+        </script>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Используемые функции</h2>
+        <ul>
+            <li><code>urlpatterns</code> - особая переменная list of path</li>
+            <li><code>path</code> - простые именованные параметры</li>
+            <li><code>re_path</code> - именованные параметры по регулярному выражению</li>
+            <li><code>include</code> - включение одного urls.py внутрь другого</li>
+        </ul>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Особенности маршрутизации в Django</h2>
+        <ul>
+            <li>Слеш (<code>/</code>) в начале роутов не указывается</li>
+            <li>Роуты описываются с помощью регулярных выражений и патернов</li>
+            <li>Можно и нужно разносить роуты по приложениям</li>
+            <li>Можно и нужно создавать именованные роуты</li>
+            <li>Одно действие – один роут – один контроллер</li>
+        </ul>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Reverse routing</h2>
+        В python коде:
+        <script type="snippet" lang="python">
+            from django.core.urlresolvers import reverse
+            reverse('home')
+            reverse('post-list-by-category', args=(10,))
+            reverse('post-detail', kwargs={'pk': 7})
+        </script>
+        В шаблоне:
+        <script type="snippet" lang="django">
+            {% url 'profile-by-id' user.id %}
+        </script>
+    </div></section>
+
+    <div class="progress"><div></div></div>
+    <script src="../../static/js/highlight.pack.js"></script>
+    <script src="../../static/node_modules/shower-core/shower.min.js"></script>
+    <script src="../../static/js/init.js"></script>
+
+</body>
+</html>
